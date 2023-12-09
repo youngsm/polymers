@@ -10,8 +10,8 @@ def main():
     basename = os.path.join(os.path.dirname(__file__), "../data/dimers/")
     dimer_lengths = np.logspace(2, 5, 20, dtype=int)
 
-    for dim in (2,3):
-        for N in tqdm(dimer_lengths, desc=f"Generating dimers in {dim}D", ncols=80):
+    for N in tqdm(dimer_lengths, desc=f"Generating dimers", ncols=80):
+        for dim in (2,3):
             fname = basename + f"dimer_d{dim}dimer{str(N).zfill(5)}.npy"
             if os.path.exists(fname):
                 continue

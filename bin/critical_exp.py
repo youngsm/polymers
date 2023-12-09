@@ -1,4 +1,4 @@
-from polymers.pivot.fast import attempt_pivot, is_valid_two
+from polymers.pivot.fast import attempt_pivot
 from polymers.analysis import Re2, Rg2, Rm2
 import numpy as np
 from tqdm import trange
@@ -44,12 +44,18 @@ def main():
     from glob import glob
     import os
     
-    basename = os.path.dirname(__file__)
-    files = sorted(glob('/Users/youngsam/Desktop/Classes/PHYS212/polymers/data/dimers/*.npy'))
+    dirname = os.path.dirname(__file__)
+    
+    def sort_fmt(file):
+        dim = file.split('_')[-1].split('dimer')[0].lstrip('d')
+        N = file.split('_')[-1].split('dimer')[1].rstrip('.npy')
+        return N + ' ' + dim
 
+    files = sorted(glob(dirname+'/../data/dimers/*.npy'), key=sort_fmt)
+    print(dirname)
     for file in files:
         walk = np.load(file)
-        log_file = os.path.join(basename, f'../../data/dimers/{os.path.basename(file)[:-4]}.csv')
+        log_file = os.path.join(dirname, f'../data/dimers/{os.path.basename(file)[:-4]}.csv')
         if os.path.exists(log_file):
             continue
         dim = walk.shape[0]

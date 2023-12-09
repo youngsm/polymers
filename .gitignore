@@ -161,8 +161,8 @@ cython_debug/
 
 # others
 *.pyc
-*.ipynb
 data/**/*
 *.bib
 *.code-workspace
 *.txt
+.DS_store
