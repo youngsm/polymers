@@ -10,9 +10,11 @@ setup(
     license='MIT',
     keywords='polymers',
     packages=['polymers'],
+    scripts=['bin/generate_dimers.py', 'bin/crtitical_exp.py'],
     install_requires=[
         'numpy',
         'numba',
         'matplotlib',
+        'tqdm',
     ],
 )
