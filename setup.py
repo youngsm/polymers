@@ -1,5 +1,8 @@
 from setuptools import setup
+from glob import glob
+import os
 
+scripts=glob(os.path.join(os.path.dirname(__file__), 'bin/*.py'))
 setup(
     name="polymers",
     version="0.1",
@@ -10,7 +13,7 @@ setup(
     license='MIT',
     keywords='polymers',
     packages=['polymers'],
-    scripts=['bin/generate_dimers.py', 'bin/crtitical_exp.py'],
+    scripts=scripts,
     install_requires=[
         'numpy',
         'numba',
