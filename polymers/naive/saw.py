@@ -32,9 +32,5 @@ def naive_self_avoiding_walk(n, dim, ntries=1):
             walk = np.hstack([walk, (walk[:,-1]+step).reshape(-1,1)])
             walk_set.add(tuple(walk[:,-1]))
         else:                                            # if there are no valid steps, we're stuck :-( let's try again
-            try:
-                return naive_self_avoiding_walk(n, dim, ntries=ntries+1)
-            except RecursionError:
-                break
-
+            walk = np.array([[0] for _ in range(dim)])
     return walk
